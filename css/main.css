@@ -2,12 +2,14 @@
 	background-color: #212a31;
 }
 .top-bar ul {
+	background-color: #212a31;
 	color: white;
 }
-.top-bar ul li {
+.top-bar ul li a {
+	background-color: #212a31;
 	color: white;
 }
-.top-bar ul li:hover {
+.top-bar ul li a:hover {
 	background-color: black !important;
 }
 
