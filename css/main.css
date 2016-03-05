@@ -1,0 +1,16 @@
+.top-bar {
+	background-color: #212a31;
+}
+.top-bar ul {
+	color: white;
+}
+.top-bar ul li {
+	color: white;
+}
+.top-bar ul li:hover {
+	background-color: black !important;
+}
+
+h1 {
+	color: #cc0000;
+}
