@@ -13,11 +13,11 @@
 <div class="top-bar">
 	<ul class="menu">
 		<li class="menu-text">EECS 352 Final Project</li>
-		<li><a href="#">Overview</a></li>
-		<li><a href="#">Approach</a></li>
-		<li><a href="#">Results</a></li>
-		<li><a href="#">Conclusion</a></li>
-		<li><a href="#">References</a></li>
+		<li><a href="#overview">Overview</a></li>
+		<li><a href="#approach">Approach</a></li>
+		<li><a href="#results">Results</a></li>
+		<li><a href="#conclusion">Conclusion</a></li>
+		<li><a href="#references">References</a></li>
 		<li><a href="#">Abstract</a></li>
 	</ul>
 	<!-- <div class="top-bar-right">
@@ -63,7 +63,7 @@
 			<h2>Overview</h2>
 			<p>We want the system to be able to identify which instrument (violin, trumpet, or vibraphone) is playing a melody. Our system will try to determine whether a melody is being played by a violin, a trumpet, or a vibraphone by using Mel-frequency cepstral coefficients (MFCCs). Since we have already done this in previous homeworks, we think this will be hopefully straightforward.</p>
 			<p>We think there are a couple of approaches to doing classification. It seems like the most tried and true method is to do a simple difference between cepstrograms. We may have to do Dynamic Time Warping to correct for length, but be might be able to avoid this by chopping the melody into the same length as our cepstrograms.</p>
-
+			<br>
 			<h3>Motivation</h3> 
 			<p>It could be a useful system because successfully developing a musical instrument identification system (MIIS) will help us learn how human brains classify and identify sounds and how we could then use that knowledge to make a computer system do the same. We think it’s cool because it could make it easy to create a database of songs by instrument type.</p>
 		</div>
@@ -82,9 +82,7 @@
 			<p>We could use the samples of recordings of violin, Bb trumpet, and vibraphone playing different notes to see whether the system can identify which instrument is being played. These recordings are downloaded from University of Iowa Electronic Music Studios. They are aiff-c audio types in various sizes. They are already labeled. We will also use samples of monophonic melodies played by the three different instruments to test the system.</p>
 
 			<h3>Process:</h3> 
-			<ul>
-				<li>1. Find MFCCs</li>
-			</ul>
+			<li> 1. Find MFCCs </li>
 		</div>
 	</div>
 </div>
@@ -120,7 +118,11 @@
 	<div class="row">
 		<div class="small-11 small-centered medium-11 medium-centered large-11 large-centered columns">
 			<h2>References</h2>
-			<li><a href="#"> Paper 1 </li>
+			<li><a href="http://sound.media.mit.edu/Papers/kdm-asa98.pdf"> “2pMU9. Musical instrument identification: A pattern-recognition approach”</a> by Keith D. Martin and Youngmoo E. Kim | MIT Media Lab Machine Listening Group | 1998 </li>
+			<li><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.474.8056&rep=rep1&type=pdf">“The Use of Mel-frequency Cepstral Coefficients in Musical Instrument Identification”</a> by Roisin Loughran, Jacqueline Walker, Michael O’Neill, and Marion O’Farrell | University of Limerick, Ireland and University College Dublin, Ireland | 2004 </li>
+			<li><a href="http://recherche.ircam.fr/anasyn/livshin/publications/livshin-dafx04-final.pdf">“Musical Instrument Identification in Continuous Recordings” </a> by Arie A. Livshin and Xavier Rodet | Analysis/Synthesis Team | Paris, France | 2004</li>
+			<li><a href="http://www1.icsi.berkeley.edu/~dpwe/research/etc/icassp2000/pdf/1285_104.PDF">“Musical Instrument Recognition Using Cepstral Coefficients and Temporal Features”</a> by Antti Eronen and Anssi Klapuri | Signal Processing Lab, Tampere University of Technology, Finland</li>
+			<li><a href="https://ccrma.stanford.edu/~pj97/MyWork/jinachitra_icme04.pdf">“Polyphonic Instrument Identification Using Independent Subspace Analysis” </a>by Pamornpol Jinachitra | CCRMA, Stanford University</li>
 		</div>
 	</div>
 </div>
