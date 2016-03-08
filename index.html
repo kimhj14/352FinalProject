@@ -68,10 +68,11 @@
 			<p>Our system will try to determine whether a melody is being played by a violin, a trumpet, or a vibraphone by using Mel-frequency cepstral coefficients (MFCCs).</p>
 
 			<h3><u>Data Set</u></h3>
-			<p>We could use the samples of recordings of violin, Bb trumpet, and vibraphone playing different notes to see whether the system can identify which instrument is being played. These recordings are downloaded from University of Iowa Electronic Music Studios. They are aiff-c audio types in various sizes. They are already labeled. We will also use samples of monophonic melodies played by the three different instruments to test the system.</p>
+			<p>We could use the samples of recordings of violin, Bb trumpet, and vibraphone playing different notes to see whether the system can identify which instrument is being played. These recordings are downloaded from University of Iowa Electronic Music Studios. They are aiff-c audio types in various sizes; we converted them to mono 16-bit wav files, using Audacity, to be compatible with librosa. They are already labeled. We will also use samples of monophonic melodies played by the three different instruments to test the system. </p>
 
 			<h3><u>Process:</u></h3> 
 			<li> 1. Find MFCCs </li>
+			<li> 2. Make cepstrograms of each instrument from the sample recordings </li>
 		</div>
 	</div>
 </div>
@@ -82,7 +83,22 @@
 	<div class="row">
 		<div class="small-11 small-centered medium-11 medium-centered large-11 large-centered columns">
 			<h2>Results</h2>
-			<p>blah blah blah</p>
+			<p>The system calculated the MFCCs of each instrument from the sample recordings and plotted a cepstrogram for each instrument.</p>
+			<br>
+			<div class="cepstrogram">
+				<p>Trumpet</p>
+				<img src="img/trumpet-cepstrogram.jpg">
+			</div>
+			<div class="cepstrogram">
+				<p>Vibraphone</p>
+				<img src="img/vibraphone-cepstrogram.jpg">
+			</div>
+			<div class="cepstrogram">
+				<p>Violin</p>
+				<img src="img/violin-cepstrogram.jpg">
+			</div>
+			<br>
+			<p>Each cepstrogram looks different from one another.</p>
 		</div>
 	</div>
 </div>
