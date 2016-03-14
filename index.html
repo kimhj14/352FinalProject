@@ -85,7 +85,7 @@
 	<div class="row">
 		<div class="small-11 small-centered medium-11 medium-centered large-11 large-centered columns">
 			<h2>Results</h2>
-			<p>The system calculated the MFCCs of each instrument from the sample recordings and plotted a cepstrogram for each instrument.</p>
+			<p>The system calculated the MFCCs of each instrument from the sample recordings and plotted a cepstrogram for each instrument. Then we flattened the MFCCs as well as normalize them.</p>
 			<br>
 			<div class="row">
 				<div class="medium-4 columns">
@@ -108,6 +108,8 @@
 			<li>For trumpet, we have 1017/1017 (100%) predicted as trumpet.</li>
 			<li>For vibraphone, we have 355/3360 (10.6%) predicted as vibraphone.</li>
 			<li>For violin, we have 16/363 (4.4%) predicted as violin.</li>
+
+			<p>Our model currently seems to overfit for trumpet.</p>
 		</div>
 	</div>
 </div>
