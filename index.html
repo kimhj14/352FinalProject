@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
 <link rel="stylesheet" href="css/main.css">
 <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
- 
+
 </head>
 <body>
- 
+
 <div class="top-bar">
 	<ul class="menu">
 		<li class="menu-text">EECS 352 Final Project</li>
@@ -19,10 +19,9 @@
 		<li><a href="#results">Results</a></li>
 		<li><a href="#conclusion">Conclusion</a></li>
 		<li><a href="#references">References</a></li>
-		<li><a href="#">Abstract</a></li>
 	</ul>
 </div>
- 
+
 <div class="callout large">
 	<div class="row column text-center">
 		<h1>Instrument Recognition in Monophonic Melodies</h1>
@@ -45,16 +44,14 @@
 	</div>
 </div>
 
-<hr>
-
 <div id="overview">
 	<div class="row">
 		<div class="small-11 small-centered medium-11 medium-centered large-11 large-centered columns">
 			<h2>Overview</h2>
-			<p>Our project is to create a system that could analyze and identify which instrument (violin, trumpet, or vibraphone) is playing a melody. Our system will try to complete this task by using Mel-frequency cepstral coefficients (MFCCs). </p>
+			<p>Our project is to create a system that could analyze and identify which instrument (violin, trumpet, or vibraphone) is playing a tone. Our system will try to complete this task by using Mel-frequency cepstral coefficients (MFCCs). </p>
 			<br>
-			<h3><u>Motivation</u></h3> 
-			<p>It could be a useful system because successfully developing a musical instrument identification system (MIIS) will help us learn how human brains classify and identify sounds and how we could then use that knowledge to make a computer system do the same. A successful MIIS could also make it possible to create a database of songs by instrument type. In addition, MIIS could enhance the current transcription systems to be able to indicate which lines transcribed are played by which instruments to make the transcribed scores even more informative.</p>
+			<h3><u>Motivation</u></h3>
+			<p>It could be a useful system because successfully developing a musical instrument identification system (MIIS) will help us learn how machines classify sounds, and give us some insight as to how ML can be applied to the field of signal processing. A successful MIIS could also make it possible to create a database of songs by instrument type. In addition, MIIS could enhance the current transcription systems to be able to indicate which lines transcribed are played by which instruments to make the transcribed scores even more informative.</p>
 		</div>
 	</div>
 </div>
@@ -68,13 +65,13 @@
 			<p>Our system will try to determine whether a melody is being played by a violin, a trumpet, or a vibraphone by using Mel-frequency cepstral coefficients (MFCCs).</p>
 
 			<h3><u>Data Set</u></h3>
-			<p>We could use the samples of recordings of violin, Bb trumpet, and vibraphone playing different notes to see whether the system can identify which instrument is being played. These recordings are downloaded from University of Iowa Electronic Music Studios. They are aiff-c audio types in various sizes; we converted them to mono 16-bit wav files, using Audacity, to be compatible with librosa. They are already labeled. We will also use samples of monophonic melodies played by the three different instruments to test the system. </p>
+			<p>Our data set conists of 100 files with recordings of a single note from a violin, Bb trumpet, and vibraphone. These recordings are downloaded from University of Iowa Electronic Music Studios. The original format was 24-bit stereo aiff; we converted that to 16-bit mono wav with Audacity to make the files compatible with librosa. They are already labeled by instruments and note pitch.</p>
 
-			<h3><u>Process:</u></h3> 
-			<p> 1. Find MFCCs </p>
-			<p> 2. Make cepstrograms of each instrument from the sample recordings </p>
-			<p> 3. Feed the cepstrogram data into an SVM </p>
-			<p> 4. Feed the test set into the trained SVM </p>
+			<h3><u>Process:</u></h3>
+			<p> 1. Generate an MFCC of each audio file using librosa </p>
+			<p> 2. Flatten the 2D arrays into vectors and feed 70 percent of the data into an SVM (with the corresponding instrument as the categorization) </p>
+      <p> 3. Normalize cepstrogram data as needed </p>
+      <p> 4. Using the other 30 percent of the cepstrogram data as a test set, evaluate accuracy of system </p>
 		</div>
 	</div>
 </div>
@@ -85,7 +82,7 @@
 	<div class="row">
 		<div class="small-11 small-centered medium-11 medium-centered large-11 large-centered columns">
 			<h2>Results</h2>
-			<p>The system calculated the MFCCs of each instrument from the sample recordings and plotted a cepstrogram for each instrument. Then we flattened and normalized the MFCCs as well.</p>
+			<p>We generated the MFCCs of each instrument and tone from the sample recordings and plotted a cepstrogram for each instrument. Then we flattened and normalized the MFCCs.</p>
 			<br>
 			<div class="row">
 				<div class="medium-4 columns">
@@ -102,16 +99,16 @@
 				</div>
 			</div>
 			<br>
-			<p>The cepstrograms are divided into 70/30 ratio for each instrument. The 70% of the data is fed into a Support Vector Machine (SVM), where the X is a matrix. The rows of this matrix correspond to every time slice of every MFCC in the training set. The columns correspond to the number of cepstrum coefficients. The Y vector has the same length as the number of rows of X, and it's either 0, 1, or 2, which correspond to trumpet, vibraphone, or violin respectively. </p>
+			<p>We had 36 files of Trumpet, 41 files of Vibraphone, and 23 of Violin. For every file, only the first 2.5 seconds were imported into librosa (at a sample rate of 22050) and used to generate an MFCC with window size = 2048, hop size = 1024, and 88 cepstral coefficients. These cepstrograms are flattened, normalized with librosa (to control for variations in instrument volume across samples) and dumped to a binary file format. Then, the data was divided into a training set comprising 70% of the data and a test set with the other 30% (division was stratified by instrument). The training data is fed into a Support Vector Machine (SVM), where each vector was also given a category of (0, 1, 2), corresponding to (Trumpet, Vibraphone, Violin).</p>
 
 			<p>We then feed the other 30% of the data into the trained SVM model, and our results are such:</p>
-			<li>For trumpet, we have 1017/1017 (100%) predicted as trumpet.</li>
-			<li>For vibraphone, we have 355/3360 (10.6%) predicted as vibraphone.</li>
-			<li>For violin, we have 16/363 (4.4%) predicted as violin.</li>
-
+			<li>For trumpet, we have 13/13 (100%) predicted as trumpet.</li>
+			<li>For vibraphone, we have 0/12 (0%) predicted as vibraphone.</li>
+			<li>For violin, we have 0/7 (0%) predicted as violin.</li>
+      <br>
+      <p> That was the result of our final attempt. Previous attempts tried to do similar things, for example without normalization, and also without truncating (but instead feeding the MFCCs cut by time index). Neither of those yielded good results either. Specifically, feeding the sliced MFCC data would probably not have worked in hindsight, since the cepstrum of an instrument is not independent of the time a note has been held on it. </p>
 			<br>
-
-			<p>Our model currently seems to overfit for trumpet.</p>
+			<p>Curiously, our model seems to overfit for trumpet every time.</p>
 		</div>
 	</div>
 </div>
@@ -122,6 +119,7 @@
 	<div class="row">
 		<div class="small-11 small-centered medium-11 medium-centered large-11 large-centered columns">
 			<h2>Conclusion</h2>
+      Our model doesn't do particularly well. Applying ML to audio samples is actually much more difficult than we imagined. I hypothesize that our samples are simply not normalized enough. There are differences, for example, in start time of the tone being played (some start immediately, while others have a delay). There are also significant differences in the length of different files. We tried to alleviate this by truncating all files to 2.5 seconds, but that did not seem to improve things. Perhaps we should also have increase our number of samples.
 		</div>
 	</div>
 </div>
@@ -158,4 +156,3 @@
 
 </body>
 </html>
-
